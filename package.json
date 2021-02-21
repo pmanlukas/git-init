@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "A simple cli in node to initialize git repositories locally and in GitHub",
   "main": "index.js",
+  "bin": {
+    "git-init": "./index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
