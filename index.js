@@ -3,6 +3,7 @@ const clear = require('clear');
 const figlet = require('figlet');
 
 const files = require('./lib/files');
+const github = require('./lib/github');
 
 clear();
 
@@ -16,3 +17,11 @@ if (files.directoryExists('.git')) {
     console.log(chalk.red('Already a Git respository!'));
     process.exit();
 }
+
+const run = async () => {
+    let token = github.getStoredGitHubToken();
+    if(!token) {
+        token = await github.getPersonalAccessToken();
+    }
+    console.log(token);
+};
