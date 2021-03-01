@@ -21,13 +21,14 @@ if (files.directoryExists('.git')) {
     process.exit();
 }
 
+//TODO: adjust to new PAT authentication
 const getGithubToken = async () => {
     // Fetch token from config store
     let token = github.getStoredGithubToken();
     if (token) {
         return token;
     }
-
+    //TODO: adjust method to use new GitHub Authentication with PAT
     // No token found, use credentials to access GitHub account
     token = await github.getPersonalAccesToken();
 
@@ -38,6 +39,7 @@ const run = async () => {
     try {
         // Retrieve & Set Authentication Token
         const token = await getGithubToken();
+        //TODO: change to PAT authentication
         github.githubAuth(token);
 
         // Create remote repository
